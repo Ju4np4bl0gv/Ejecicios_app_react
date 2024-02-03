@@ -2,30 +2,35 @@ import React, { useContext, useState } from "react";
 import { TemperaturaDatos } from "./TemperaturaDatos";
 import { TemperaturaContext } from "../Context/TemperaturaContext";
 import { useLocation } from "react-router-dom";
+import { buscar } from "../Hooks/buscar";
+import { BuscardorHeader } from "../Pages/BuscardorHeader";
 
 export const Header = () => {
-  const [ciudad, setciudad] = useState("");
+  const [ciudad2, setciudad2] = useState("");
   const key = "3b7241a0ef4e1394a11b8bf4e886e838";
   const location = useLocation();
 
+  const { setvalorBuscar } = useContext(TemperaturaContext);
 
   const { setTemperatura } = useContext(TemperaturaContext);
+  const { setciudad } = BuscardorHeader();
+
   const inputSearch = ({ target }) => {
-    setciudad(target.value);
+    setciudad2(target.value);
   };
 
   const buscarCiudad = async () => {
-    if (ciudad.length > 0 && location.pathname==='/' )
-
+    if (ciudad2.length > 0 && location.pathname === "/")
       try {
         const respuestaApi = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${key}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${ciudad2}&appid=${key}`
         );
         const dataJson = await respuestaApi.json();
-        setTemperatura(dataJson)
+        setTemperatura(dataJson);
       } catch (error) {
         console.error("sucedio un error " + error);
       }
+    else setvalorBuscar(ciudad2);
   };
 
   return (
