@@ -1,17 +1,22 @@
 import React, { useContext, useState } from "react";
 import { TemperaturaDatos } from "./TemperaturaDatos";
 import { TemperaturaContext } from "../Context/TemperaturaContext";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [ciudad, setciudad] = useState("");
   const key = "3b7241a0ef4e1394a11b8bf4e886e838";
+  const location = useLocation();
+
+
   const { setTemperatura } = useContext(TemperaturaContext);
   const inputSearch = ({ target }) => {
     setciudad(target.value);
   };
 
   const buscarCiudad = async () => {
-    if (ciudad.length > 0)
+    if (ciudad.length > 0 && location.pathname==='/' )
+
       try {
         const respuestaApi = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${key}`

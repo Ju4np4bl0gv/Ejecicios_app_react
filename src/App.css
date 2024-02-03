@@ -4,3 +4,7 @@
 .mainPrincipal{
     background-color: rgb(185, 185, 221);
 }
+
+.card{
+    width: 18rem;
+}

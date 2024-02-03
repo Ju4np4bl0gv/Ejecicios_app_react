@@ -6,7 +6,7 @@ export const TemperaturaDatos = () => {
 
   console.log(Temperatura);
   return (
-    <div>
+    <div className="mainPrincipal">
       {Temperatura === null ? (
         <h3>Sin iformación a mostrar</h3>
       ) : (

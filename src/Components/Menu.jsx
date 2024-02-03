@@ -11,10 +11,17 @@ export const Menu = () => {
         <div className="position-sticky pt-3">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <Link to="/" className="nav-link " aria-current="page">
+              <NavLink to="/" className="nav-link " aria-current="page">
                 <span data-feather="home"></span>
-                Dashboard
-              </Link>
+                Clima
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/Movies">
+                <span data-feather="file"></span>
+                Peliculas
+              </NavLink>
             </li>
           </ul>
         </div>
